@@ -19,9 +19,9 @@ Before you begin, ensure you have met the following requirements:
 
 Clone the repository:
 
-   ```sh
-   git clone https://github.com/faidfadjri/sample-express-ts-mssql
-   ```
+```sh
+git clone https://github.com/faidfadjri/sample-express-ts-mssql
+```
 
 Install dependencies:
 
@@ -33,19 +33,18 @@ Install dependencies:
 
 Duplicate `.env-example` & change to .env:
 
-   ```sh
-   cp .env-example .env
-   PORT=3000  # Your app's port number (e.g., 3000)
-   DB_HOST=localhost  # Your database host (e.g., localhost)
-   DB_USER=your_db_user  # Your database user (e.g., your_db_user)
-   DB_PASS=your_db_password  # Your database password (e.g., your_db_password)
-   DB_PORT=1433  # Your database port (e.g., 1433)
-   DB_NAME=your_default_database  # Your default database name (e.g., your_default_database)
-   ```
+```sh
+cp .env-example .env
+PORT=3000  # Your app's port number (e.g., 3000)
+DB_HOST=localhost  # Your database host (e.g., localhost)
+DB_USER=your_db_user  # Your database user (e.g., your_db_user)
+DB_PASS=your_db_password  # Your database password (e.g., your_db_password)
+DB_PORT=1433  # Your database port (e.g., 1433)
+DB_NAME=your_default_database  # Your default database name (e.g., your_default_database)
+```
 
 Run
 
 ```sh
    npm run start
 ```
-
