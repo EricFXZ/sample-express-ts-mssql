@@ -1,20 +1,19 @@
 import dotenv from 'dotenv';
+import { DataSource } from 'typeorm';
+import { VehicleListTM } from '../models/Vehicle/VehicleList';
 dotenv.config();
 
-import * as db from 'mssql';
-
-const config = {
-  user: process.env.DB_USER,
+const database = new DataSource({
+  type: 'mssql',
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  server: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  options: {
+  entities: [VehicleListTM],
+  extra: {
     encrypt: false,
-    trustServerCertificate: false,
   },
-};
+});
 
-const connectionString = `Server=${config.server},${config.port};Database=${config.database};User Id=${config.user};Password=${config.password};Encrypt=false`;
-
-export const database = new db.ConnectionPool(connectionString);
+export default database;
