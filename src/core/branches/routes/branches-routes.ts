@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { listBranches } from "../controllers/branches-controllers";
+import { createBranch, listBranches, updateBranch } from "../controllers/branches-controllers";
 
 const router = Router();
 
 router.get('/branches',listBranches);
+
+router.post('/branch', createBranch);
+
+router.patch('/branch',updateBranch);
 
 export default router;
