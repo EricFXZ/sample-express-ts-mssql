@@ -8,8 +8,8 @@ import branchesRouter from './core/branches/routes/branches-routes';
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:57375', // Cambia el puerto según tu app Flutter Web
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: 'http://localhost:53519', // Cambia el puerto según tu app Flutter Web
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type'],
 }));
 
