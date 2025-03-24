@@ -58,6 +58,7 @@ export const createTeacher = async (req: Request, res: Response) => {
 export const updateTeacher = async (req: Request, res: Response) => {
     try {
         const pool = await database.connect();
+        console.log(req.params.codigoDocente);
         const result = await pool.request()
             .input("CodigoDocente", sql.Int, req.params.codigoDocente)
             .input("P_Nombre", sql.VarChar, req.body.P_Nombre)
@@ -67,15 +68,15 @@ export const updateTeacher = async (req: Request, res: Response) => {
             .input("Telefono", sql.VarChar, req.body.Telefono)
             .input("Salario", sql.Float, req.body.Salario)
             .input("CodigoSucursal", sql.Int, req.body.CodigoSucursal)
-            .query(`UPDATE DOCENTE SET DNI = @DNI, P_Nombre = @P_Nombre, 
+            .query(`UPDATE DOCENTE SET P_Nombre = @P_Nombre, 
                 S_Nombre = @S_Nombre, P_Apellido = @P_Apellido, S_Apellido = @S_Apellido,
                 Telefono = @Telefono, Salario = @Salario, CodigoSucursal = @CodigoSucursal 
-                WHERE CodigoDocete = @CodigoDocente;`);
+                WHERE CodigoDocente = @CodigoDocente;`);
+        await pool.close();
         if (result.rowsAffected[0] === 0) {
             return res.status(404).json({ message: ' Teacher not found' });
         }
-        await pool.close();
-        res.status(200).json({ message: 'Branch updated succesfully' });
+        res.status(200).json({ message: 'Teacher updated succesfully' });
 
     } catch (error) {
         res.json(error);
